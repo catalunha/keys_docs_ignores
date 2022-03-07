@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "730876504931",
+    "project_id": "todo-list-provider-hive",
+    "storage_bucket": "todo-list-provider-hive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730876504931:android:71c88f8d588cfc06e64156",
+        "android_client_info": {
+          "package_name": "education.brintec.todo_list_provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730876504931-c31nin8i5h2lro8sp353vrj38g00dchn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "education.brintec.todo_list_provider",
+            "certificate_hash": "031b8255ea1c3259de40935fceda93c500792d28"
+          }
+        },
+        {
+          "client_id": "730876504931-vl2lqntapucpr3db2o24gfm5n7jgb193.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTOe7UNz7LmFSXQ93LGbZU-jzu8tSK-fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730876504931-vl2lqntapucpr3db2o24gfm5n7jgb193.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
