@@ -1,10 +1,7 @@
 
-$ flutter run -d chrome --web-hostname localhost --web-port 7357
-
-
-# firebase
-catalunha@pop-os:~$ keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
-Enter keystore password:  android
+catalunha@pop-os:~/myapp/todo_medium$ keytool -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore
+Enter keystore password: android 
 Alias name: androiddebugkey
 Creation date: Feb 27, 2022
 Entry type: PrivateKeyEntry
@@ -23,9 +20,31 @@ Version: 1
 
 Warning:
 The certificate uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
-catalunha@pop-os:~$ 
+catalunha@pop-os:~/myapp/todo_medium$ 
+
+        applicationId "br.com.empresa.todo_medium"
+
+    android/app/build.gradle
+      defaultConfig {
+          applicationId "br.com.empresa.todo_medium"
+      }
+
+.
+..
+.dart_tool
+.idea
+android
+lib
+test
+web
+.gitignore
+.metadata
+.packages
+analysis_options.yaml
+lectio.iml
+pubspec.lock
+pubspec.yaml
+README.md
 
 
-# create
-catalunha@pop-os:~/myapp$ flutter create --project-name=todo_list_provider --org education.brintec --platforms android,web -a kotlin ./todo_list_provider
-
+flutter create --project-name=lectio --org education.brintec --platforms android,web -a kotlin ./lectio

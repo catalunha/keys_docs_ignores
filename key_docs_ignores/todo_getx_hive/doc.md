@@ -1,3 +1,18 @@
+# compilar e deploy
+
+Compilado com:
+```
+catalunha@pop-os:~/myapp/todo_getx_hive$ flutter build web --web-renderer html
+```
+Deploy:
+```
+catalunha@pop-os:~/myapp/todo_getx_hive$ flutter build web --web-renderer html
+
+
+$ flutter run -d chrome --web-hostname localhost --web-port 7357
+```
+
+
 
 # Versao Web
 ## etapa 1
@@ -67,12 +82,10 @@ https://developers.google.com/identity/sign-in/web/sign-in
 
 ![ss](print1.png)
 
-```
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="598064906974-tpaauhblmg8gtvu9c49gtluate5r3lfg.apps.googleusercontent.com">
 
-</head>
-```
+## etapa 3
+Veja configurações do index.html deste projeto.
+
 
 
 # minSdkVersion
@@ -125,3 +138,5 @@ Version: 1
 Warning:
 The certificate uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
 catalunha@pop-os:~/myapp/todo_getx_hive$ 
+
+
