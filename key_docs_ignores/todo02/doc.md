@@ -1,3 +1,21 @@
+# Observação 
+Não estou encontrado este todo02 no console do firebase https://console.firebase.google.com/u/0/
+Então vou criar um todo05 e agrupar toda a esperiencia anterior nele.
+
+
+## [1.0.0]
+É a versao do todo01, todo_list_provider, mas feito em hive e getx
+- Firebase
+  - [ ] Aplicativo
+     - [ ] Android
+     - [ ] Web
+  - [ ] Authentication
+     - [ ] Emai/Senha
+     - [ ] Google
+  - [ ] Firestore
+  - [ ] Hosting
+  - [ ] Storage
+
 # compilar e deploy
 
 Compilado com:
@@ -105,6 +123,7 @@ def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion')
 if (flutterMinSdkVersion == null) {
     flutterMinSdkVersion = flutter.minSdkVersion.toString()
 }
+android {
 ...
 
     defaultConfig {
