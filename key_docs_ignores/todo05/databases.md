@@ -1,12 +1,19 @@
 # Agradecimento
 
-Este projeto só foi possivel devido a cooperação direto do Marcus Brasizza e do Rodrigo Rahman e da galera da Academia do Flutter http://academiadoflutter.com.br/
+Este projeto só foi possivel devido a cooperação direta do Marcus Brasizza e do Rodrigo Rahman e da galera da Academia do Flutter http://academiadoflutter.com.br/
+
+# Fontes
+- http://academiadoflutter.com.br/
+- https://refactoring.guru/pt-br/design-patterns/abstract-factory
 
 # Introdução
 
-Nesta versão 05 o ToDo permite que o usuário decida em qual DataSource irá armazenar as informações. 
-Conforme as opções a seguir. Apenas as 2 primeiras foram implementadas.
+Nesta versão 05 do ToDo trabalhei com a possibilidade do usuário decidir em qual DataSource irá armazenar as informações. 
+E para fazer isto usarei o Padrão criacional Abstract Factory.
+
+Conforme as opções a seguir. Apenas, Hive/Firebase, foram implementadas.
 ```Dart
+//file:data/datasources/datasources.dart
 enum DatasourcesEnum {
   hive,
   firebase,
@@ -15,7 +22,8 @@ enum DatasourcesEnum {
   appwrite,
 }
 ```
-Mas vamos começar do começo. A estrutura das pastas
+# A estrutura das pastas
+Estou estudando o cleanCode para a estrutura de alguns projetos e estou gostando. Segue minha abordagem neste projeto.
 ```
 data
 ├── datasources
@@ -60,13 +68,13 @@ presentation
 │   │       └── task_append_page.dart
 └── routes.dart
 ```
-A interface do repositorio
+# A abstração do repositorio
 ```Dart
 abstract class TaskRepository {
   Future<void> create(TaskModel taskModel);
 }
 ```
-E sua implementação para Hive
+## E sua implementação para Hive
 ```Dart
 class TaskRepositoryHiveImp implements TaskRepository {
   static TaskRepositoryHiveImp? _instance;
@@ -90,7 +98,7 @@ class TaskRepositoryHiveImp implements TaskRepository {
   }
 }
 ```
-E sua implementação para Firebase
+## E sua implementação para Firebase
 ```Dart
 class TaskRepositoryFirebaseImp implements TaskRepository {
   static TaskRepositoryFirebaseImp? _instance;
@@ -127,13 +135,17 @@ class TaskRepositoryFirebaseImp implements TaskRepository {
   }
 }
 ```
-Até ai tudo bem. Mas os detalhes são mostrados agora com o Factory para as respectivas instancias.
+Até ai tudo bem. 
+Mas o detalhe interessante que aprendi neste projeto foi a abstração da fabrica de implementação dos repositórios. Conforme a seguir.
+
+# Abstração da fábrica de repositorios
+
 ```Dart
 abstract class TaskRepositoryFactory {
   TaskRepository produce();
 }
 ```
-
+# Implementação da fabrica para Hive
 ```Dart
 class TaskRepositoryFactoryHive implements TaskRepositoryFactory {
   UserService _userService;
@@ -151,7 +163,7 @@ class TaskRepositoryFactoryHive implements TaskRepositoryFactory {
   }
 }
 ```
-
+# Implementação da fabrica para Firebase
 ```Dart
 class TaskRepositoryFactoryFirebase implements TaskRepositoryFactory {
   final UserService _userService;
@@ -173,8 +185,9 @@ class TaskRepositoryFactoryFirebase implements TaskRepositoryFactory {
   }
 }
 ```
-E como usar tudo isto.
-Em algum controller no inicio do seu App decida qual RepositoryFactory irá ser usado. Passando os parametros necessarios para o construtor construir.
+# E como usar os repositorios e suas fabricas.
+Em algum controller no inicio do seu App decida qual RepositoryFactory irá ser usado. Passando os parametros necessarios para o construtor construir. Mas veja que ainda não foram construidos.
+
 ```Dart
 ...
       if (controller.userModel.database == DatasourcesEnum.firebase) {
@@ -206,7 +219,8 @@ class TaskAppendDependencies implements Bindings {
   }
 }
 ```
-Neste caso o TaskUseCase já se organiza para atender as chamadas do controller.
+Neste caso o TaskUseCase já pede a fabrica para fabricar conforme a instancia definida para atender as chamadas do controller.
+Veja que trabalhamos com as abstrações e não com as classes concretas.
 ```Dart
 class TaskUseCaseImp implements TaskUseCase {
   TaskRepositoryFactory _taskRepositoryFactory;
@@ -227,7 +241,7 @@ class TaskUseCaseImp implements TaskUseCase {
   }
 }
 ```
-Agora é apenas usar no controller.
+Agora é apenas usar no controller. Ele buscará a implementação correta do repositorio que foi fabricado por sua fábrica.
 ```Dart
 class TaskAppendController extends GetxController
     with LoaderMixin, MessageMixin {
@@ -241,3 +255,9 @@ class TaskAppendController extends GetxController
   }
 }
 ```
+
+Obrigado por chegar até aqui. 
+
+Deus te abençõe grandemente. 
+
+Qq duvida ou contribuição estou a disposição discord: @catalunha#5282
